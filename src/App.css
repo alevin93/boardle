@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-container {
+  
   display: flex;
-  flex-direction: column;
+  background-color: #FFD800;
+  padding: 1rem;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 1rem;
+  border: 1px #FFD800 solid;
+  border-radius: .25rem;
+}
+
+.header-title-text {
+  color: #FFD800;
+  font-size: larger;
+  font-weight: bolder;
+  text-align: center;
+  background-color: #222222;
+  padding: .75rem;
+  margin-top: 0;
+  border: 2px #222222 solid;
+  border-radius: .5rem;
+}
+
+.menu-buttons-container {
+  position: absolute;
+  right: 3rem;
+}
+
+.menu-buttons {
+  background-color: #222222;
   color: white;
+  padding: .5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: vertical;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input {
+  display: block;
+  min-height: 12vh;
+  border: 1px #222222 solid;
+  border-radius: .5rem;
+  text-align: center;
+  justify-content: center;
+  text-wrap: wrap;
+  
+}
+
+.submit-button {
+  background-color: #FFD800;
+  border: none;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px #FFD800 solid;
+  border-radius: .5rem;
+
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.copy-link-button {
+
 }
