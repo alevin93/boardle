@@ -1,12 +1,25 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 
 function Input() {
 
   const [input, setInput] = useState('');
 
 
-  function handleSubmit() {
-    console.log(input)
+  async function handleSubmit() {
+    const submitData = async() => {
+      let message = {
+        "data" : `${input}`,
+      };
+      const response = await fetch("http://localhost:4000/submit", {
+        method: 'POST',
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(message)
+      });
+    }
+
+    await submitData();
   }
 
 

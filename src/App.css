@@ -41,7 +41,7 @@
 
 .input {
   display: block;
-  min-height: 12vh;
+  min-height: 7rem;
   border: 1px #222222 solid;
   border-radius: .5rem;
   text-align: center;
