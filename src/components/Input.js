@@ -8,6 +8,7 @@ function Input() {
   async function handleSubmit() {
     const submitData = async() => {
       let message = {
+        "user" : `${localStorage.getItem('user')}`,
         "data" : `${input}`,
       };
       const response = await fetch("http://localhost:4000/submit", {
