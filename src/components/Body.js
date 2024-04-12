@@ -1,18 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Score from './Score';
 
 function Body() {
   return (
-    <div className='card-container'>
-        <div>one</div>
-        <div>two</div>
-        <div>one</div>
-        <div>two</div><div>one</div>
-        <div>two</div><div>one</div>
-        <div>two</div><div>one</div>
-        <div>two</div><div>one</div>
-        <div>two</div><div>one</div>
-        <div>two</div><div>one</div>
-        <div>two</div>
+    <div className='main-container'>
+      <div className='score-container'>
+        <Score />
+      </div>
+      <div className='comment-container'>
+
+      </div>
     </div>
   )
 }

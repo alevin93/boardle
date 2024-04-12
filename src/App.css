@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   margin: 1rem;
-  border: 1px #FFD800 solid;
+  border: 3px black solid;
   border-radius: .25rem;
 }
 
@@ -80,9 +80,11 @@
   background-color: #FFD800;
   min-width: 20rem;
   min-height: 5rem;
+  max-width: 20rem;
   border: 1px #FFD800 solid;
   border-radius: .5rem;
   align-items: center;
+  text-align: center;
   justify-content: center;
   padding: 2rem;
 }
@@ -92,6 +94,10 @@
   border: 5px solid #222222;
   padding: 1rem;
   border-radius: .5rem;
+}
+
+.create-user-input {
+  margin-bottom: 1rem;
 }
 
 .create-user-text {
@@ -118,4 +124,51 @@
 .return-user-submit {
   max-width: 6rem;
   margin: auto;
+}
+
+.emphasized-register-text {
+  font-size: 2.5rem;
+  color: red;
+  text-decoration-line: underline;
+}
+
+.private-passkey {
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+.main-container {
+  height: fit-content;
+}
+
+.score-container {
+  background-color: #FFD800;
+  padding: 2rem;
+  min-width: 40rem;
+  min-height: 10rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  border: 3px black solid;
+  border-radius: .25rem;
+}
+
+.comment-container {
+  background-color: hsla(103, 99%, 41%, 0.747);
+  min-height: 2.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  border: 3px black solid;
+  border-radius: .25rem;
+}
+
+.score-card {
+  background-color: grey;
+  max-width: fit-content;
+  padding: 1rem;
+  border: #222222 3px solid;
+  border-radius: .5rem;
 }

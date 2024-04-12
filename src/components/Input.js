@@ -27,7 +27,7 @@ function Input() {
   return (
     <div>
       <div className='input-container'>
-        <textarea className='input' onChange={(e) => {
+        <textarea className='input' placeholder="Enter your score from any game" onChange={(e) => {
             setInput(e.target.value)}}></textarea>
         <button className='submit-button' onClick={handleSubmit} >SUBMIT</button>
       </div>
