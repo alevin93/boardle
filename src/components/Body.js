@@ -6,6 +6,8 @@ function Body() {
     <div className='main-container'>
       <div className='score-container'>
         <Score />
+        <Score />
+        <Score />
       </div>
       <div className='comment-container'>
 

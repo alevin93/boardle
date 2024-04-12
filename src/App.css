@@ -146,6 +146,7 @@
 }
 
 .score-container {
+  display: flex;
   background-color: #FFD800;
   padding: 2rem;
   min-width: 40rem;
@@ -167,6 +168,7 @@
 
 .score-card {
   background-color: grey;
+  margin-right: 1.5rem;
   max-width: fit-content;
   padding: 1rem;
   border: #222222 3px solid;
