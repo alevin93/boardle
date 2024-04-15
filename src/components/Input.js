@@ -15,7 +15,7 @@ function Input() {
         "data" : `${input}`,
         "comment" : `${comment}`
       };
-      const response = await fetch(`http://172.88.24.161:4000/submit`, {
+      const response = await fetch(`http://34.16.181.190:4000/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"

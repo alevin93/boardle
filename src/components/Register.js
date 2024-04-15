@@ -13,7 +13,7 @@ function Register() {
   const handleCreateUser = async () => {
       const getNewUser = async () => {
         localStorage.setItem("name", name);
-          const response = await fetch(`http://172.88.24.161:4000/createUser`, {
+          const response = await fetch(`http://34.16.181.190:4000/createUser`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name : name }) 
@@ -33,7 +33,7 @@ function Register() {
 
   const handleSubmit = async () => {
     const restoreUser = async () => {
-      const response = await fetch(`http://172.88.24.161:4000/restoreUser`, {
+      const response = await fetch(`http://34.16.181.190:4000/restoreUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user : input }) 
