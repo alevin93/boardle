@@ -5,43 +5,53 @@ function Body() {
 
   const [gamesData, setGamesData] = useState({});
   const [gamesArray, setGamesArray] = useState([]);
+  const [newGamesData, setNewGamesData] = useState([]);
 
   useEffect(() => {
-    
     fetchGames();
-    sortGames();
-    
- // Calling the function within useEffect
-  }, []);
+  }, []); 
 
 
   async function fetchGames() {
     try {
-      const response = await fetch('http://localhost:4000/getFriendsData', {
+      const response = await fetch('http://192.168.0.103:4000/getFriendsData', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user : localStorage.getItem('user') }) 
+        body: JSON.stringify({ user: localStorage.getItem('user') }) 
       });
-  
-      const data = await response.json(); 
-      console.log(data);
+   
+      const data = await response.json(); // Ensure data is fully parsed
       setGamesData(data);
-      return data;
-  
-    } catch (error) {
-      console.error('FUCK FUCK:', error);
-      // You might want to return an empty array or a specific error object.
-      return []; 
-    }
-  }
 
-  const sortGames = () => {
-    let date = getDate();
-    gamesData.forEach(element => {
-      if(element[date]) {
-        
-      }
-    });
+      let date = getDate();
+      let newData = JSON.parse(data);
+
+      const gameNamesArray = []; // Array to store game names
+
+      const newGamesData = {}; 
+
+    for (let x = 0; x < newData.length; x++) {
+        const playerData = newData[x];
+        const date = getDate(); // Ideally, get this before the player loop
+
+        for (const gameName in playerData.dates[date]) {
+            if (!newGamesData[gameName]) {
+                newGamesData[gameName] = []; 
+            }
+
+            const gameData = {
+                name: playerData.name,
+                text: playerData.dates[date][gameName].text,  
+                comment: playerData.dates[date][gameName].comment, 
+            };
+            newGamesData[gameName].push(gameData); 
+        }
+    }
+     setNewGamesData(newGamesData); 
+    }
+    catch (error) {
+      // ... your error handling logic ...
+    }
   }
 
   function getDate() {
@@ -56,10 +66,13 @@ function Body() {
 
   return (
     <div className='main-container'>
-      <button className='menu-buttons' onClick={fetchGames}>PRESS THIS BUTTON</button>
-      
+        <div className="game-list"> 
+            {Object.entries(newGamesData).map(([gameName, newGamesData]) => (
+                <GameRow key={gameName} gameName={gameName} gameDataArray={newGamesData} /> 
+            ))}
+        </div>
     </div>
-  )
+  );
 }
 
 export default Body

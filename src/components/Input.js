@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 function Input() {
 
   const [input, setInput] = useState('');
+  const [comment, setComment] = useState('');
 
 
   async function handleSubmit() {
@@ -10,17 +11,19 @@ function Input() {
       let message = {
         "user" : `${localStorage.getItem('user')}`,
         "data" : `${input}`,
+        "comment" : `${comment}`
       };
-      const response = await fetch("http://localhost:4000/submit", {
+      const response = await fetch("http://192.168.0.103:4000/submit", {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"
         },
         body: JSON.stringify(message)
       });
+      console.log(response);
     }
 
-    await submitData();
+    await submitData().then(res => window.location.reload());
   }
 
 
@@ -30,6 +33,8 @@ function Input() {
         <textarea className='input' placeholder="Enter your score from any game" onChange={(e) => {
             setInput(e.target.value)}}></textarea>
         <button className='submit-button' onClick={handleSubmit} >SUBMIT</button>
+        <textarea className='input' placeholder="Enter comments..." onChange={(e) => {
+            setComment(e.target.value)}}></textarea>
       </div>
     </div>
   )

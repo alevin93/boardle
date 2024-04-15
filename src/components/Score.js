@@ -1,21 +1,22 @@
-import React from 'react'
+import React from 'react'; // Ensure you have React imported
 
-function Score() {
-  return (
-    <div className='score-card'>
-    <div className='score-card-name'>
-        <p>Angel</p>
-    </div>
-    <div className='score-card-text'>
-        <p>Connections</p>
-        <p>Puzzle #305</p>
-        <p>🟨🟨🟨🟨</p>
-        <p>🟩🟩🟩🟩</p>
-        <p>🟦🟦🟦🟦</p>
-        <p>🟪🟪🟪🟪</p>
-    </div>
-    </div>
-  )
+function Score(props) {
+    const { data } = props;
+
+    const scoreLines = data.text.split('~'); // Split into lines
+
+    return (
+        <div className='score-card'>
+            <div className='score-card-name'>
+                <p>{data.name}</p>
+            </div>
+            <div className='score-card-text'>
+                {scoreLines.map((line, index) => (
+                    <p key={index}>{line}</p>
+                ))}
+            </div>
+        </div>
+    );
 }
 
-export default Score
+export default Score;

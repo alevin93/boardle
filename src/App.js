@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import './App.css';
 import TopBar from './components/TopBar';
 import Input from './components/Input';
@@ -7,23 +7,39 @@ import Register from './components/Register';
 
 function App() {
 
+  const [showMenu, setShowMenu] = useState(false);
 
+  const toggleMenu = useCallback(() => {
+    if(showMenu) {
+      setShowMenu(false)
+    } 
+    else {
+      setShowMenu(true);
+    }
+  })
 
-  if(localStorage.getItem('user')) {
+  if(showMenu){
     return (
-    <>
-      <TopBar />
+      <div className="main-container" >
+        <TopBar toggleMenu={toggleMenu} />
+      </div>
+    );
+  }
+  else if(localStorage.getItem('user')) {
+    return (
+    <div className="main-container">
+      <TopBar toggleMenu={toggleMenu} />
       <Input />
       <Body />
-    </>
+    </div>
     );
   }
   else {
     return (
-      <>
-        <TopBar />
+      <div className="main-container">
+        <TopBar toggleMenu={toggleMenu} />
         <Register />
-      </>
+      </div>
     )
   }
 }
