@@ -33,7 +33,7 @@ function Register() {
 
   const handleSubmit = async () => {
     const restoreUser = async () => {
-      const response = await fetch(`http://10.182.0.2:5500/restoreUser`, {
+      const response = await fetch(`http://localhost:5500/restoreUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user : input }) 
