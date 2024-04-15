@@ -15,7 +15,7 @@ function Input() {
         "data" : `${input}`,
         "comment" : `${comment}`
       };
-      const response = await fetch(`http://127.0.0.1:5500/submit`, {
+      const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"
