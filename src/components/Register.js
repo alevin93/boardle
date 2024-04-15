@@ -13,7 +13,7 @@ function Register() {
   const handleCreateUser = async () => {
       const getNewUser = async () => {
         localStorage.setItem("name", name);
-          const response = await fetch(`http://127.0.0.1:5500/createUser`, {
+          const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/createUser`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name : name }) 
@@ -33,7 +33,7 @@ function Register() {
 
   const handleSubmit = async () => {
     const restoreUser = async () => {
-      const response = await fetch(`http://127.0.0.1:5500/restoreUser`, {
+      const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/restoreUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user : input }) 
