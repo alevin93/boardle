@@ -18,7 +18,7 @@ function Body() {
 
   async function fetchGames() {
     try {
-      const response = await fetch(`https://34.16.211.122:4000/getFriendsData`, {
+      const response = await fetch(`https://127.0.0.1:4000/getFriendsData`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: localStorage.getItem('user') }) 
