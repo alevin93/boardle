@@ -13,7 +13,7 @@ function Register() {
   const handleCreateUser = async () => {
       const getNewUser = async () => {
         localStorage.setItem("name", name);
-          const response = await fetch(`http://10.182.0.2:5500/createUser`, {
+          const response = await fetch(`http:/localhost:5500/createUser`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name : name }) 
