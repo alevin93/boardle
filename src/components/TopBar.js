@@ -2,6 +2,9 @@ import React,{ useState } from 'react'
 
 function TopBar(props) {
   
+
+  const BASE_URL = process.env.BASE_URL;
+
   const { toggleMenu } = props;
 
   const [addFriend, setAddFriend] = useState(false);
@@ -36,7 +39,7 @@ function TopBar(props) {
   }
 
   const handleAddFriend = async () => {
-    const response = await fetch("http://192.168.0.103:4000/addFriend", {
+    const response = await fetch(`http://172.88.24.161:4000/addFriend`, {
           method: 'POST',
           headers: {
             'Content-Type': "application/json"

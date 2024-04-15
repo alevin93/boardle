@@ -5,6 +5,8 @@ function Input() {
   const [input, setInput] = useState('');
   const [comment, setComment] = useState('');
 
+  const BASE_URL = process.env.BASE_URL;
+
 
   async function handleSubmit() {
     const submitData = async() => {
@@ -13,7 +15,7 @@ function Input() {
         "data" : `${input}`,
         "comment" : `${comment}`
       };
-      const response = await fetch("http://192.168.0.103:4000/submit", {
+      const response = await fetch(`http://172.88.24.161:4000/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"

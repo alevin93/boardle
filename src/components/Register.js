@@ -2,16 +2,18 @@ import React,{ useState } from 'react'
 
 function Register() {
 
-
+  const BASE_URL = process.env.BASE_URL;
 
   const [name, setName] = useState('');
   const [input, setInput] = useState('');
   const [registered, setRegistered] = useState(false);
 
+  console.log(BASE_URL);
+
   const handleCreateUser = async () => {
       const getNewUser = async () => {
         localStorage.setItem("name", name);
-          const response = await fetch('http://192.168.0.103:4000/createUser', {
+          const response = await fetch(`http://172.88.24.161:4000/createUser`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name : name }) 
@@ -31,7 +33,7 @@ function Register() {
 
   const handleSubmit = async () => {
     const restoreUser = async () => {
-      const response = await fetch('http://192.168.0.103:4000/restoreUser', {
+      const response = await fetch(`http://172.88.24.161:4000/restoreUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user : input }) 

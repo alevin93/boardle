@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import GameRow from './GameRow';
 
+
+
 function Body() {
 
   const [gamesData, setGamesData] = useState({});
   const [gamesArray, setGamesArray] = useState([]);
   const [newGamesData, setNewGamesData] = useState([]);
+
+  const BASE_URL = process.env.BASE_URL;
 
   useEffect(() => {
     fetchGames();
@@ -14,7 +18,7 @@ function Body() {
 
   async function fetchGames() {
     try {
-      const response = await fetch('http://192.168.0.103:4000/getFriendsData', {
+      const response = await fetch(`http://172.88.24.161:4000/getFriendsData`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: localStorage.getItem('user') }) 
