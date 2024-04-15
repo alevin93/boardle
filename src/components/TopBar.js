@@ -39,7 +39,7 @@ function TopBar(props) {
   }
 
   const handleAddFriend = async () => {
-    const response = await fetch(`https://127.0.0.1:5500/addFriend`, {
+    const response = await fetch(`https://10.182.0.2:5500/addFriend`, {
           method: 'POST',
           headers: {
             'Content-Type': "application/json"
