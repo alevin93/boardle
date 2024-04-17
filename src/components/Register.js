@@ -8,8 +8,6 @@ function Register() {
   const [input, setInput] = useState('');
   const [registered, setRegistered] = useState(false);
 
-  console.log(BASE_URL);
-
   const handleCreateUser = async () => {
       const getNewUser = async () => {
         localStorage.setItem("name", name);
@@ -40,12 +38,13 @@ function Register() {
       });
       const jsonData = await response.json();
 
+      console.log(jsonData);
+
       localStorage.setItem("user", jsonData.private);
       localStorage.setItem("name", jsonData.name);
       localStorage.setItem("share", jsonData.public)
     }
     await restoreUser();
-    window.location.reload();
   }
 
   if(registered == false){

@@ -12,7 +12,7 @@ function GameRow(props) {
     let tempArray = [];
     for (let x = 0; x < gameDataArray.length; x++) {
         if (gameDataArray[x].comment !== '') { 
-            tempArray.push(`${gameDataArray[x].name} -  ${gameDataArray[x].comment}`);
+            tempArray.push(`${gameDataArray[x].comment} - ${gameDataArray[x].name}`);
         }
     }
     setCommentArray(tempArray);
