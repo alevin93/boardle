@@ -184,6 +184,10 @@
   border-top: 2px black solid;
 }
 
+.bigger-comment-container {
+  display: flex;
+}
+
 .comment-container {
   max-width: fit-content;
   background-color: white;
@@ -201,8 +205,9 @@
 
 .score-card {
   background-color: white ;
-  margin-right: 1.5rem;
+  margin-right: 2.5rem;
   max-width: fit-content;
+  min-width: 10rem;
   border: #FFD800 3px solid;
   border-radius: .5rem;
 }
@@ -221,6 +226,8 @@ p {
   background-color: black;
   width: 100%;
   padding: .5rem;
+  margin-top: .5rem;
+  margin-left: .5rem;
   border-radius: .5rem;
 }
 
@@ -231,9 +238,11 @@ p {
 
 .game-title {
   color: white;
+  text-shadow: 3px 3px 1px black;
   margin-left: 3rem;
 }
 
 .game-row-container {
   margin-top: 2rem;
+  text-align: center;
 }

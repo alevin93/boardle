@@ -29,12 +29,14 @@ function GameRow(props) {
                   </div>
               ))}
           </div> 
-          <div className='comment-container'>
+          <div className='bigger-comment-container'>
             {
             commentArray.map((comments) => (
+                <div className='comment-container'>
                 <p key={comments} className='comment-text'>{comments}</p>
+                </div>
             ))}
-        </div>
+          </div>
       </div> 
   );
 } else {
