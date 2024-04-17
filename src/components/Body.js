@@ -28,39 +28,32 @@ function Body() {
       const data = await response.json(); // Ensure data is fully parsed
       setGamesData(data);
 
-      let date = getDate();
-      let newData = JSON.parse(data);
-      console.log(newData);
-      console.log(date);
-
-      const gameNamesArray = []; // Array to store game names
-
-      const newGamesData = {}; 
+      const date = getDate(); 
+    const newData = JSON.parse(data); 
+    const newGamesData = {};
 
     for (let x = 0; x < newData.length; x++) {
-        const playerData = newData[x];
-        const date = getDate(); // Ideally, get this before the player loop
+      const playerData = newData[x];
 
-        for (const gameName in playerData.dates[date]) {
-            if (!newGamesData[gameName]) {
-                newGamesData[gameName] = []; 
-            }
-
-            const gameData = {
-                name: playerData.name,
-                text: playerData.dates[date][gameName].text,  
-                comment: playerData.dates[date][gameName].comment, 
-            };
-            newGamesData[gameName].push(gameData); 
+      for (const gameName in playerData.dates[date]) {
+        if (!newGamesData[gameName]) {
+          newGamesData[gameName] = []; 
         }
+
+        const gameData = {
+          name: playerData.name,
+          text: playerData.dates[date][gameName].text,  
+          comment: playerData.dates[date][gameName].comment, 
+        };
+        newGamesData[gameName].push(gameData);
+      }
     }
-     setNewGamesData(newGamesData);
-     console.log(newGamesData);
-    }
-    catch (error) {
-      // ... your error handling logic ...
-    }
+
+    setNewGamesData(newGamesData);
+  } catch (error) {
+    // ... your error handling logic ...
   }
+}
 
   function getDate() {
     let currentDate = new Date();

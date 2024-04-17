@@ -30,14 +30,14 @@ function Input() {
 
 
   return (
-    <div>
+    <div className='bigger-input-container'>
       <div className='input-container'>
         <textarea className='input' placeholder="Enter your score from any game" onChange={(e) => {
             setInput(e.target.value)}}></textarea>
         <button className='submit-button' onClick={handleSubmit} >SUBMIT</button>
-        <textarea className='input' placeholder="Enter comments..." onChange={(e) => {
-            setComment(e.target.value)}}></textarea>
       </div>
+      <textarea className='input-comment' placeholder="Enter comments..." onChange={(e) => {
+            setComment(e.target.value)}}></textarea>
     </div>
   )
 }

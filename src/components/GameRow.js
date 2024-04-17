@@ -39,7 +39,7 @@ function GameRow(props) {
   );
 } else {
     return (
-        <>
+        <div className='game-row-container'>
           <h2 className='game-title'>{gameName}</h2>
             <div className='score-container'> 
                 {gameDataArray.map((gameData) => (
@@ -48,7 +48,7 @@ function GameRow(props) {
                     </div>
                 ))}
             </div>
-        </> 
+        </div> 
     );
 }
 }
