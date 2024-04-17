@@ -23,6 +23,7 @@ function Register() {
 
       }
       await getNewUser();
+      window.location.reload();
   }
 
   const continueRegistration = async () => {
@@ -45,6 +46,7 @@ function Register() {
       localStorage.setItem("share", jsonData.public)
     }
     await restoreUser();
+    window.location.reload();
   }
 
   if(registered == false){
