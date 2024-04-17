@@ -2,7 +2,7 @@ import React,{ useState } from 'react'
 
 function Register() {
 
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const [name, setName] = useState('');
   const [input, setInput] = useState('');
@@ -13,7 +13,7 @@ function Register() {
   const handleCreateUser = async () => {
       const getNewUser = async () => {
         localStorage.setItem("name", name);
-          const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/createUser`, {
+          const response = await fetch(`${BASE_URL}/createUser`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name : name }) 
@@ -33,14 +33,12 @@ function Register() {
 
   const handleSubmit = async () => {
     const restoreUser = async () => {
-      const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/restoreUser`, {
+      const response = await fetch(`${BASE_URL}/restoreUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user : input }) 
       });
       const jsonData = await response.json();
-
-      console.log(jsonData)
 
       localStorage.setItem("user", jsonData.private);
       localStorage.setItem("name", jsonData.name);

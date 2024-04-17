@@ -5,7 +5,7 @@ function Input() {
   const [input, setInput] = useState('');
   const [comment, setComment] = useState('');
 
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
   async function handleSubmit() {
@@ -15,7 +15,7 @@ function Input() {
         "data" : `${input}`,
         "comment" : `${comment}`
       };
-      const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/submit`, {
+      const response = await fetch(`${BASE_URL}/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"

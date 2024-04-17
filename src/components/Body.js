@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GameRow from './GameRow';
 
+const URL = process.env.BASE_URL;
 
 
 function Body() {
@@ -9,7 +10,7 @@ function Body() {
   const [gamesArray, setGamesArray] = useState([]);
   const [newGamesData, setNewGamesData] = useState([]);
 
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     fetchGames();
@@ -18,7 +19,7 @@ function Body() {
 
   async function fetchGames() {
     try {
-      const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/getFriendsData`, {
+      const response = await fetch(`${BASE_URL}/getFriendsData`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: localStorage.getItem('user') }) 
@@ -29,6 +30,8 @@ function Body() {
 
       let date = getDate();
       let newData = JSON.parse(data);
+      console.log(newData);
+      console.log(date);
 
       const gameNamesArray = []; // Array to store game names
 
@@ -51,7 +54,8 @@ function Body() {
             newGamesData[gameName].push(gameData); 
         }
     }
-     setNewGamesData(newGamesData); 
+     setNewGamesData(newGamesData);
+     console.log(newGamesData);
     }
     catch (error) {
       // ... your error handling logic ...

@@ -3,7 +3,7 @@ import React,{ useState } from 'react'
 function TopBar(props) {
   
 
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const { toggleMenu } = props;
 
@@ -39,7 +39,7 @@ function TopBar(props) {
   }
 
   const handleAddFriend = async () => {
-    const response = await fetch(`http://ec2-54-177-240-216.us-west-1.compute.amazonaws.com:5500/addFriend`, {
+    const response = await fetch(`${BASE_URL}/addFriend`, {
           method: 'POST',
           headers: {
             'Content-Type': "application/json"
