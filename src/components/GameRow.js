@@ -24,7 +24,7 @@ function GameRow(props) {
         <h2 className='game-title'>{gameName}</h2>
           <div className='score-container'> 
               {gameDataArray.map((gameData) => (
-                  <div key={gameData.name}> 
+                  <div key={gameData.player}> 
                       <Score data={gameData} />
                   </div>
               ))}
@@ -45,7 +45,7 @@ function GameRow(props) {
           <h2 className='game-title'>{gameName}</h2>
             <div className='score-container'> 
                 {gameDataArray.map((gameData) => (
-                    <div key={gameData.name}> 
+                    <div key={gameData.player}> 
                         <Score data={gameData} />
                     </div>
                 ))}

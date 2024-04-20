@@ -7,8 +7,6 @@ const URL = process.env.BASE_URL;
 function Body() {
 
   const [gamesData, setGamesData] = useState({});
-  const [gamesArray, setGamesArray] = useState([]);
-  const [newGamesData, setNewGamesData] = useState([]);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -19,39 +17,32 @@ function Body() {
 
   async function fetchGames() {
     try {
-      console.log(localStorage.getItem('user'));
-      console.log(localStorage.getItem('name'));
-      const response = await fetch(`${BASE_URL}/getFriendsData`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user: localStorage.getItem('user') }) 
-      });
-   
-      const data = await response.json(); // Ensure data is fully parsed
-      setGamesData(data);
+    const response = await fetch(`${BASE_URL}/getfriendsdata`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user: localStorage.getItem('share'), date: getDate()}) 
+    });
+  
+    const data = await response.json(); // Ensure data is fully parsed
+    setGamesData(data);
 
-      const date = getDate(); 
-    const newData = JSON.parse(data); 
-    const newGamesData = {};
+    const date = getDate(); 
+    const rawGamesData = JSON.parse(data); 
+    const sortedGamesData = {};
 
-    for (let x = 0; x < newData.length; x++) {
-      const playerData = newData[x];
-
-      for (const gameName in playerData.dates[date]) {
-        if (!newGamesData[gameName]) {
-          newGamesData[gameName] = []; 
-        }
-
-        const gameData = {
-          name: playerData.name,
-          text: playerData.dates[date][gameName].text,  
-          comment: playerData.dates[date][gameName].comment, 
-        };
-        newGamesData[gameName].push(gameData);
+    for (let x = 0; x < rawGamesData.length; x++) {
+      if (!sortedGamesData.hasOwnProperty(rawGamesData[x].gameName)) {
+        sortedGamesData[rawGamesData[x].gameName] = [];
       }
+      sortedGamesData[rawGamesData[x].gameName].push(
+        {
+          "player": rawGamesData[x].player,
+          "text": rawGamesData[x].text,
+          "comment": rawGamesData[x].comment
+        }
+      )
     }
-
-    setNewGamesData(newGamesData);
+    setGamesData(sortedGamesData);
   } catch (error) {
     // ... your error handling logic ...
   }
@@ -70,8 +61,8 @@ function Body() {
   return (
     <div className='main-container'>
         <div className="game-list"> 
-            {Object.entries(newGamesData).map(([gameName, newGamesData]) => (
-                <GameRow key={gameName} gameName={gameName} gameDataArray={newGamesData} /> 
+            {Object.entries(gamesData).map(([gameName, gamesData]) => (
+                <GameRow key={gameName} gameName={gameName} gameDataArray={gamesData} /> 
             ))}
         </div>
     </div>

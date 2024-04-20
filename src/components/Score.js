@@ -8,7 +8,7 @@ function Score(props) {
     return (
         <div className='score-card'>
             <div className='score-card-name'>
-                <p>{data.name}</p>
+                <p>{data.player}</p>
             </div>
             <div className='score-card-text'>
                 {scoreLines.map((line, index) => (

@@ -39,14 +39,15 @@ function TopBar(props) {
   }
 
   const handleAddFriend = async () => {
-    const response = await fetch(`${BASE_URL}/addFriend`, {
+    const response = await fetch(`${BASE_URL}/linkFriends`, {
           method: 'POST',
           headers: {
             'Content-Type': "application/json"
           },
-          body: JSON.stringify({ user : localStorage.getItem('user'), friend : input})
+          body: JSON.stringify({ user : localStorage.getItem('share'), friend : input})
     }).then( response => window.location.reload());
     console.log(response);
+    toggleMenu();
   }
 
   if(addFriend) {
