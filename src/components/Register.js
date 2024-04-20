@@ -23,7 +23,6 @@ function Register() {
 
       }
       await getNewUser();
-      window.location.reload();
   }
 
   const continueRegistration = async () => {
@@ -39,11 +38,15 @@ function Register() {
       });
       const jsonData = await response.json();
 
-      console.log(jsonData);
+      console.log(JSON.parse(jsonData));
 
-      localStorage.setItem("user", jsonData.private);
-      localStorage.setItem("name", jsonData.name);
-      localStorage.setItem("share", jsonData.public)
+      localStorage.setItem("user", JSON.parse(jsonData).private);
+      localStorage.setItem("name", JSON.parse(jsonData).name);
+      localStorage.setItem("share", JSON.parse(jsonData).public)
+
+      console.log(localStorage.getItem('user'))
+      console.log(localStorage.getItem('name'))
+      console.log(localStorage.getItem('share'))
     }
     await restoreUser();
     window.location.reload();
@@ -58,11 +61,13 @@ function Register() {
               setName(e.target.value)}} placeholder="Enter name here..." ></input>
               <button className='create-user-button' onClick={handleCreateUser}>Create User</button>
           </div>
-          <div className='return-user-container'>
-              <h3 className='create-user-text'>Returning User?  Enter private code below!</h3>
-              <input className='return-user-input' onChange={(e) => {
+          <h3 className='create-user-text'>OR</h3>
+          <div className='create-user-container'>
+              <h3 className='create-user-text'>Returning User?</h3>
+              <h3 className='create-user-text'>Enter private code below!</h3>
+              <input className='return-user-input' placeholder="Enter private code here..." onChange={(e) => {
               setInput(e.target.value)}}></input>
-              <button className='return-user-submit' onClick={handleSubmit}>Submit</button>
+              <button className='create-user-button' onClick={handleSubmit}>Submit</button>
           </div>
       </div>
     )

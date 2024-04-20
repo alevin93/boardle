@@ -25,7 +25,7 @@ function Input() {
       console.log(response);
     }
 
-    await submitData().then(/*res => window.location.reload()*/);
+    await submitData().then(res => window.location.reload());
   }
 
 

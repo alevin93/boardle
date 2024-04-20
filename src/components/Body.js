@@ -43,6 +43,7 @@ function Body() {
       )
     }
     setGamesData(sortedGamesData);
+    console.log(gamesData)
   } catch (error) {
     // ... your error handling logic ...
   }
