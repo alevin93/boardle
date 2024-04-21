@@ -5,7 +5,7 @@ const URL = process.env.BASE_URL;
 
 
 function Body() {
-
+ 
   const [gamesData, setGamesData] = useState({});
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
