@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 
+
 function Menu() {
+
+  
+  const BASE_URL=process.env.REACT_APP_BASE_URL;
+
   const handleLogOut = () => {
     localStorage.clear();
     window.location.reload();
@@ -8,6 +13,17 @@ function Menu() {
 
   const [addFriend, setAddFriend] = useState(false);
   const [input, setInput] = useState('');
+
+  const handleAddFriend = async () => {
+    const response = await fetch(`${BASE_URL}/linkFriends`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': "application/json"
+          },
+          body: JSON.stringify({ user : localStorage.getItem('share'), friend : input})
+    }).then( response => window.location.reload());
+    console.log(response);
+  }
 
   function handleCopyCode() {
     // Create a new text area element
@@ -29,20 +45,14 @@ function Menu() {
     document.body.removeChild(textArea);
   }
 
-  const handleAddFriendButton = () => {
-    if(addFriend) {
-      setAddFriend(false);
-    } else {
-      setAddFriend(true);
-    }
-  }
     return (
     <div className='main-menu-container'>
       <div className="friend-add-container">
               <button className='menu-buttons-copy' onClick={handleCopyCode}>Copy your code</button>
               <div className='add-friend-input-container'>
-              <input className='add-friend-input' placeholder="Enter friend's code"></input>
-              <button className='menu-buttons-add' onClick={handleAddFriendButton}>Add friend</button>
+              <input className='add-friend-input' placeholder="Enter friend's code" onChange={(e) => {
+            setInput(e.target.value)}}></input>
+              <button className='menu-buttons-add' onClick={handleAddFriend}>Add friend</button>
               </div>
       </div>
       <div className='register-card-container'>
