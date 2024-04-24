@@ -65,6 +65,9 @@ function Menu() {
       
       <button onClick={handleLogOut} >LOG OUT</button>
       </div>
+      <div className='coffee-container'>
+      <a className='buy-me-a-coffee' href="https://buymeacoffee.com/alevin93" target="_blank">Buy me a coffee?</a>
+      </div>
       </div>
     </div>
     )
