@@ -46,7 +46,8 @@ function Menu() {
   }
 
     return (
-    <div className='main-menu-container'>
+    <>
+    <div className='main-menu-container.show'>
       <div className="friend-add-container">
               <button className='menu-buttons-copy' onClick={handleCopyCode}>Copy your code</button>
               <div className='add-friend-input-container'>
@@ -70,6 +71,10 @@ function Menu() {
       </div>
       </div>
     </div>
+    <div className='menu-negative'>
+      <p></p>
+    </div>
+    </>
     )
 }
 

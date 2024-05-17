@@ -4,6 +4,7 @@ function Input() {
 
   const [input, setInput] = useState('');
   const [comment, setComment] = useState('');
+  const [toggle, setToggle] = useState(false);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -28,9 +29,21 @@ function Input() {
     await submitData().then(res => window.location.reload());
   }
 
+  const toggleInputSlider = () => {
+    if(toggle === false) {
+      setToggle(true);
+    }
+    else if(toggle === true && input === "") {
+      setToggle(false);
+    }
+  }
+
 
   return (
-    <div className='bigger-input-container'>
+    <div className={`bigger-input-container ${toggle ? 'show' : ''}`}>
+      <button className='top-input-container' onClick={toggleInputSlider}>
+        <p>SUBMIT</p>
+      </button>
       <div className='input-container'>
         <textarea className='input' placeholder="Enter your score from any game" onChange={(e) => {
             setInput(e.target.value)}}></textarea>

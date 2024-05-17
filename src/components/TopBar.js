@@ -1,20 +1,29 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react';
 
-function TopBar(props) {
-  
+function TopBar({ toggleMenu }) {
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+const [symbol, setSymbol] = useState('MENU');
 
-  const { toggleMenu } = props;
-
-  return (
-      <div className="header-container">
-          <div className='header-title-text'>BOARDLE</div>
-          <div className='menu-buttons-container'>
-              <button className='menu-buttons' onClick={toggleMenu} >MENU</button>
-          </div>
-      </div>
-    )
+const toggle = () => {
+    toggleMenu();
+    if (symbol === 'MENU') {
+        setSymbol("X")
+    }
+    if (symbol === "X") {
+        setSymbol("MENU");
+    }
 }
 
-export default TopBar
+
+
+  return (
+    <div className="header-container">
+      <div className='header-title-text'>BOARDLE</div>
+      <div className='menu-buttons-container'>
+        <button className='menu-buttons' onClick={toggle}>{symbol}</button>
+      </div>
+    </div>
+  );
+}
+
+export default TopBar;

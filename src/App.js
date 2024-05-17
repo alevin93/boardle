@@ -19,19 +19,13 @@ function App() {
     }
   })
 
-  if(showMenu){
+  if(localStorage.getItem('user')) {
     return (
-      <div className="main-container" >
-        <TopBar toggleMenu={toggleMenu} />
+    <div className="app-wrapper">
+      <TopBar toggleMenu={toggleMenu} />
+      <div className={`main-menu-container ${showMenu ? 'show' : ''}`}>
         <Menu />
       </div>
-    );
-  }
-  else if(localStorage.getItem('user')) {
-    return (
-    <div className="main-container">
-      <TopBar toggleMenu={toggleMenu} />
-      <Input />
       <Body />
     </div>
     );

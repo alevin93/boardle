@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import GameRow from './GameRow';
+import Input from './Input';
 
 const URL = process.env.BASE_URL;
 
@@ -66,6 +67,7 @@ function Body() {
                 <GameRow key={gameName} gameName={gameName} gameDataArray={gamesData} /> 
             ))}
         </div>
+        <Input />
     </div>
   );
 }
