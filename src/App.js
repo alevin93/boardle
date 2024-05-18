@@ -5,6 +5,7 @@ import Menu from './components/Menu'
 import Input from './components/Input';
 import Body from './components/Body';
 import Register from './components/Register';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -26,7 +27,11 @@ function App() {
       <div className={`main-menu-container ${showMenu ? 'show' : ''}`}>
         <Menu />
       </div>
+      <div className={`cancel-area-container ${showMenu ? 'show' : ''}`}>
+        <button className='cancel-area' onClick={toggleMenu}>BUTTON</button>
+    </div>
       <Body />
+      <Footer />
     </div>
     );
   }

@@ -1,3 +1,7 @@
+h3 {
+  margin: .25rem;  
+}
+
 .header-container {
   max-width: 100vw;
   display: grid;
@@ -12,12 +16,27 @@
   z-index: 10000;
 }
 
+.footer-container {
+  max-width: 100vw;
+  display: grid;
+  bottom: 0;
+  right: 0;
+  justify-content: center; 
+  align-items: center;
+  padding: 1rem;
+  display: flex;
+  background-color: #FAF0E6;
+  border-top: black 2px solid;
+  align-items: center;
+}
+
 .header-wrapper {
   z-index: 1000000;
 }
 
 .friend-add-container {
   justify-content: center;
+  text-align: center;
   display: grid;
   z-index: 1000;
 }
@@ -57,10 +76,11 @@
   height: fit-content;
   transform: translateY(-200%); /* Initially hides the menu content off-screen */
   overflow-y: auto; /* Enables scrolling if content overflows */
-  transition: transform 0.3s ease-in-out; /* Smooths menu appearance */
+  transition: transform 0.5s ease-in-out; /* Smooths menu appearance */
   z-index: 100; /* Places the menu above other elements */
   background-color: #FAF0E6;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  z-index: 100;
 }
 
 .main-menu-container.show {
@@ -120,24 +140,27 @@
 .bigger-input-container {
   overflow-x:hidden;
   overflow-y:hidden;
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
+  transition: all .5s ease-in-out;
+  position: fixed;
   bottom: 0;
   right: 0;
+  max-height: 2.5rem;
+  max-width: 5rem;
   background-color: #3b3b3b;
-  border-top: 3px black solid;
-  border-left: 3px black solid;
-  border-top-left-radius: .5rem;
+  border: 3px black solid;
+  border-radius: .5rem;
   padding-left: 1rem;
   padding-bottom: 1rem;
   padding-right: 1rem;
   justify-content: center;
   display: grid;
-  transform: translate(50%,85%);
+  overflow: hidden;
+  z-index: 100;
+  margin: 1rem;
 }
 
 .top-input-container {
-  text-align: left;
+  text-align: center;
   color: black;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 1rem;
@@ -152,7 +175,9 @@
 }
 
 .bigger-input-container.show {
-  transform: translateY(0);
+  max-width: 100%;
+  max-height: 100%;
+  
 }
 
 .input {
@@ -297,11 +322,13 @@
 
 .app-wrapper {
   max-width: 100vw;
+  max-height: 100vh;
 }
 
 .main-container {
   max-width: 100vw;
   height: fit-content;
+  min-height: 86.5vh;
 }
 
 .score-container {
@@ -377,7 +404,7 @@ p {
 }
 
 .game-row-container {
-  margin-top: 2rem;
+  padding-bottom: 1rem;
   text-align: center;
   max-width: 100vw;
   overflow-x: auto;
@@ -392,9 +419,47 @@ p {
   color: black;
   padding: 1rem;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: .5rem;
 }
 
 .coffee-container {
   display: flex;
   justify-content: center;
+}
+
+.cancel-area-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.cancel-area-container.show {
+  visibility: visible;
+}
+
+.cancel-area {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+}
+
+.calendar-container {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FAF0E6;
+  width: fit-content;
+  text-align: center;
+  border: black 2px solid;
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+}
+
+.date-button {
+  background-color: none;
+  border: none;
+  font-size: larger;
+  font-family:fantasy;
+  font-weight: bolder;
 }

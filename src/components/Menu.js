@@ -49,6 +49,8 @@ function Menu() {
     <>
     <div className='main-menu-container.show'>
       <div className="friend-add-container">
+              <p>Your friend code is:</p>
+              <h3>{localStorage.getItem("share")}</h3>
               <button className='menu-buttons-copy' onClick={handleCopyCode}>Copy your code</button>
               <div className='add-friend-input-container'>
               <input className='add-friend-input' placeholder="Enter friend's code" onChange={(e) => {
@@ -57,14 +59,12 @@ function Menu() {
               </div>
       </div>
       <div className='register-card-container'>
-      <div className='create-user-container'><p>Menu</p>
+      <div className='menu-card-container'>
       <h1>Logged in as: {localStorage.getItem("name")}</h1>
       <p>Your private passkey is:</p>
       <h3 className='private-passkey'>{localStorage.getItem("user")}</h3>
-      <p>Your friend code is:</p>
-      <h3>{localStorage.getItem("share")}</h3>
       
-      <button onClick={handleLogOut} >LOG OUT</button>
+      <button onClick={handleLogOut} className='buy-me-a-coffee' >LOG OUT</button>
       </div>
       <div className='coffee-container'>
       <a className='buy-me-a-coffee' href="https://buymeacoffee.com/alevin93" target="_blank">Buy me a coffee?</a>
