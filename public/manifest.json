@@ -1,6 +1,6 @@
 {
   "short_name": "BOARDLE",
-  "name": "Share and compare scores with friends!",
+  "name": "BOARDLE: Share your scores!",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,11 +20,10 @@
     }
   ],
   "share_target": {
-    "action": "/share-handler",
-    "method": "GET",
+    "action": "/share-target/",
+    "method": "POST",
     "params": {
-      "text": "description",
-      "url": "link"
+      "text": "text"
     }
   },
   "start_url": ".",
