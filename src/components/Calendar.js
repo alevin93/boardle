@@ -1,4 +1,7 @@
 import React from 'react'
+import BackArrow from '@material-ui/icons/ArrowBack';
+import ForwardArrow from '@material-ui/icons/ArrowForward';
+
 
 function Calendar({ date, setDate, dateOffset, setDateOffset, restoreDate }) {
 
@@ -120,11 +123,21 @@ function Calendar({ date, setDate, dateOffset, setDateOffset, restoreDate }) {
       setDate(tempDate)
   }
 
+  function getDate() {
+    let currentDate = new Date();
+    let year = currentDate.getFullYear(); // Get the full year
+    let month = currentDate.getMonth() + 1; // Months are 0-indexed
+    if (month < 10) { month = `0${month}`; }
+    let day = currentDate.getDate();
+    let formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  }
+
   return (
     <div className='calendar-container'>
-      <button className='menu-buttons' onClick={decrementDate}>PREV</button>
+      <button className='calendar-buttons' onClick={decrementDate}><BackArrow/></button>
       <button className='date-button'>{formatDate(date)}</button>
-      <button className='menu-buttons' onClick={incrementDate} >NEXT</button>
+      <button className='calendar-buttons' onClick={incrementDate} >{date === getDate() ? <p></p> : <ForwardArrow/>}</button>
     </div>
   )
 }
