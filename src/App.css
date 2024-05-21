@@ -348,12 +348,11 @@ h3 {
 
 .score-container {
   scrollbar-width: none;
-  background-color: #fffff2;
+  background-color: white;
   max-width: 100%;
   overflow-x: auto;
   display: flex;
   padding: 1rem;
-  border-bottom: 2px #787c7f solid;
   border-top: 2px #787c7f solid;
 }
 
@@ -382,8 +381,11 @@ h3 {
 
 .score-card {
   background-color: white ;
-  border: #787c7f solid 1px;
-  box-shadow: .25rem .25rem black;
+  border-bottom: 2px #787c7f solid;
+  border-left: 2px #787c7f solid;
+  border-top: 2px #787c7f solid;
+  
+  box-shadow: 5px 5px;
   margin-right: 2.5rem;
   max-width: fit-content;
   min-width: 10rem;
