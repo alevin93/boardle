@@ -34,16 +34,16 @@ h3 {
 }
 
 .footer-container {
-  max-width: 100vw;
+  width: 100%;  /* Still using full viewport width */
+  color: white;
+  font-family: 'Clear Sans';
   display: grid;
-  bottom: 0;
-  right: 0;
-  justify-content: center; 
+  top: auto;
+  justify-content: center;
   align-items: center;
-  padding: 1rem;
-  display: flex;
-  background-color: #FAF0E6;
-  border-top: black 2px solid;
+  padding: .5rem;
+  box-sizing: border-box;
+  background-color: black;
   align-items: center;
 }
 
@@ -131,10 +131,15 @@ h3 {
   font-family: 'Clear Sans';
 }
 .menu-buttons {
-  background-color: #FFD800;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
   margin: .5rem;
   min-width: fit-content;
-  border: 2px black solid;
   border-radius: .5rem;
   color: black;
   padding: .5rem;
@@ -160,9 +165,8 @@ h3 {
   bottom: 0;
   right: 0;
   max-height: 2rem;
-  background-color: #787c7f;
-  border: 3px black solid;
-  border-radius: 2rem;
+  background-color: white;
+  border: 2px white solid;
   padding-left: 1rem;
   padding-right: 1rem;
   justify-content: center;
@@ -189,18 +193,17 @@ h3 {
 
 .bigger-input-container.show {
   height: fit-content;
-  border-radius: .5rem;
   max-height: 100%;
-  
+  border: 3px solid black;
 }
 
 .input {
   display: block;
   padding: 1rem;
+  box-shadow: 5px 5px;
   height: 10rem;
   overflow: hidden;
   border: 2px black solid;
-  border-radius: .5rem;
   text-align: center;
   justify-content: center;
   text-wrap: wrap;
@@ -341,9 +344,9 @@ h3 {
 }
 
 .main-container {
+  min-height: 83.5vh;
   max-width: 100vw;
   height: fit-content;
-  min-height: 86.5vh;
 }
 
 .score-container {
@@ -353,7 +356,6 @@ h3 {
   overflow-x: auto;
   display: flex;
   padding: 1rem;
-  border-top: 2px #787c7f solid;
 }
 
 .bigger-comment-container {
@@ -365,9 +367,9 @@ h3 {
 
 .comment-container {
   flex: 0 0 auto;
-  max-width: fit-content;
+  max-width: 25vw;
   background-color: white;
-  white-space: nowrap;
+  white-space: wrap;
   padding: 1rem;
   margin: 1rem;
   border: black 2px solid;
@@ -419,6 +421,7 @@ p {
   color: black;
   margin-left: 3rem;
   font-family: 'Clear Sans';
+  border-bottom: 2px solid #787c7f;
 }
 
 .game-row-container {
@@ -485,9 +488,9 @@ p {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-  font-size: larger;
   font-family: 'Clear Sans';
   font-weight: bolder;
+  justify-content: center;
 }
 .calendar-buttons {
   background: none;
@@ -497,6 +500,19 @@ p {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+  vertical-align: middle;
   color: black;
   font-family: 'Clear Sans';
+}
+
+.no-data-text-container {
+  margin-top: 3rem;
+  display: flex;
+  font-size: x-large;
+  font-family: 'Clear Sans';
+  text-align: center;
+  justify-content: center;
+  max-width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }

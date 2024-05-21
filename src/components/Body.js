@@ -17,6 +17,7 @@ function Body() {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
+    console.log(Object.keys(gamesData))
     let temp = getDate();
     if (date) {
       fetchGames(date);
@@ -72,7 +73,23 @@ function getDate() {
   let formattedDate = `${year}-${month}-${day}`;
   return formattedDate;
 }
-
+if(Object.keys(gamesData).length === 0) {
+  return (
+    <div className='main-container'>
+        <Calendar date={date} setDate={setDate} dateOffset={dateOffset} setDateOffset={setDateOffset} restoreDate={restoreDate} />
+        <div className="game-list"> 
+            {Object.entries(gamesData).map(([gameName, gamesData]) => (
+                <GameRow key={gameName} gameName={gameName} gameDataArray={gamesData} /> 
+            ))}
+        </div>
+        <div className='no-data-text-container'>
+        <p className='no-data-text'>Nobody has submitted for today.  Be the first!</p>
+        </div>
+        <Input />
+    </div>
+  );
+}
+else {
   return (
     <div className='main-container'>
         <Calendar date={date} setDate={setDate} dateOffset={dateOffset} setDateOffset={setDateOffset} restoreDate={restoreDate} />
@@ -84,6 +101,7 @@ function getDate() {
         <Input />
     </div>
   );
+}
 }
 
 export default Body
