@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 function Input() {
+
   const [input, setInput] = useState('');
   const [comment, setComment] = useState('');
   const [toggle, setToggle] = useState(false);

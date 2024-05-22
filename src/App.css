@@ -38,7 +38,7 @@ h3 {
   color: white;
   font-family: 'Clear Sans';
   display: grid;
-  top: auto;
+  bottom: 0;
   justify-content: center;
   align-items: center;
   padding: .5rem;
@@ -53,9 +53,12 @@ h3 {
 
 .friend-add-container {
   justify-content: center;
+  background-color: #787c7f;
   text-align: center;
   display: grid;
   z-index: 1000;
+  padding: 1rem;
+  border: 2px black solid;
 }
 
 .header-title-text {
@@ -85,7 +88,6 @@ h3 {
   margin-bottom: auto;
   padding: 2rem;
   border: 2px black solid;
-  border-radius: .5rem;
   position: absolute;
   width: fit-content;
   height: fit-content;
@@ -93,8 +95,8 @@ h3 {
   overflow-y: auto; /* Enables scrolling if content overflows */
   transition: transform 0.5s ease-in-out; /* Smooths menu appearance */
   z-index: 100; /* Places the menu above other elements */
-  background-color: #ffffff;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  background-color: white;
+  box-shadow: 5px 5px; /* Optional shadow */
   z-index: 100;
 }
 
@@ -107,26 +109,30 @@ h3 {
   text-align: center;
   height: 2rem;
   border: 2px black solid;
-  border-radius: .5rem;
   margin: .5rem;
   margin-top: 1rem;
 }
+
+.friend-code-text {
+  font-family: 'Clear Sans';
+}
+
 .menu-buttons-copy {
-  background-color: #FFD800;
+  background-color: black;
   width: 100%;
   border: 2px black solid;
-  border-radius: .5rem;
-  color: black;
-  padding: 1rem;
+  color: white;
+  padding: .5rem;
+  font-weight: 700;
+  font-size:1.2rem;
   font-family: 'Clear Sans';
 }
 .menu-buttons-add {
-  background-color: #FFD800;
+  background-color: black;
   margin: .5rem;
   min-width: fit-content;
   border: 2px black solid;
-  border-radius: .5rem;
-  color: black;
+  color: white;
   padding: .5rem;
   font-family: 'Clear Sans';
 }
@@ -250,14 +256,17 @@ h3 {
 }
 
 .create-user-container {
+  font-family: 'Clear Sans';
   display: grid; 
   margin: .5rem;
-  background-color: #FAF0E6;
+  background-color: white;
   min-width: 20rem;
   min-height: 5rem;
   max-width: 20rem;
-  border: 2px black solid;
-  border-radius: .5rem;
+  border-top: 2px #787c7f solid;
+  border-bottom: 2px #787c7f solid;
+  border-left: 2px #787c7f solid;
+  box-shadow: 5px 5px;
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -265,23 +274,34 @@ h3 {
 }
 
 .create-user-button {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-family: 'Clear Sans';
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  background-color: #FFD800;
-  border: 2px solid black;
-  padding: 1rem;
+  color: white;
+  background-color: black;
+  
   max-width: fit-content;
-  border-radius: .5rem;
 }
 
 .create-user-input {
+  margin-top: .5rem;
   font-family:'Courier New', Courier, monospace;
   display: block;
   padding: 1rem;
   overflow: hidden;
   border: 2px black solid;
-  border-radius: .5rem;
   text-align: center;
   justify-content: center;
   margin-bottom: 1rem;
@@ -308,10 +328,10 @@ h3 {
 .return-user-input {
   font-family:'Courier New', Courier, monospace;
   display: block;
+  margin-top: .5rem;
   padding: 1rem;
   overflow: hidden;
   border: 2px black solid;
-  border-radius: .5rem;
   text-align: center;
   justify-content: center;
   margin-bottom: 1rem;
@@ -332,10 +352,10 @@ h3 {
 .private-passkey {
   justify-content: center;
   text-align: center;
-  background-color: black;
-  color: white;
+  color: black;
+  border: black solid 2px;
+  margin-top: 1rem;
   padding: 1rem;
-  border-radius: .5rem;
 }
 
 .app-wrapper {
@@ -344,8 +364,8 @@ h3 {
 }
 
 .main-container {
-  min-height: 83.5vh;
   max-width: 100vw;
+  min-height: 79.5vh;
   height: fit-content;
 }
 
@@ -366,12 +386,13 @@ h3 {
 }
 
 .comment-container {
+  scrollbar-width: none;
   flex: 0 0 auto;
-  max-width: 25vw;
+  max-width: 40vw;
   background-color: white;
   white-space: wrap;
-  padding: 1rem;
-  margin: 1rem;
+  padding: .7rem;
+  margin: .25rem;
   border: black 2px solid;
   border-radius: .5rem;
 }
@@ -386,7 +407,6 @@ h3 {
   border-bottom: 2px #787c7f solid;
   border-left: 2px #787c7f solid;
   border-top: 2px #787c7f solid;
-  
   box-shadow: 5px 5px;
   margin-right: 2.5rem;
   max-width: fit-content;
@@ -414,10 +434,11 @@ p {
 
 .score-card-text {
   font-family:'Clear Sans';
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
 .game-title {
+  font-size: 1.25rem;
   color: black;
   margin-left: 3rem;
   font-family: 'Clear Sans';
@@ -434,12 +455,12 @@ p {
 .buy-me-a-coffee {
   text-decoration-line: none;
   width: 100%;
-  background-color: #FFD800;
+  size: 1.2rem;
+  background-color: #787c7f;
   border: 2px black solid;
-  border-radius: .5rem;
-  color: black;
+  color: white;
   padding: 1rem;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Clear Sans';
   margin-top: .5rem;
 }
 
@@ -487,6 +508,7 @@ p {
   padding-left: .5rem;
 	font: inherit;
 	cursor: pointer;
+  font-size: 1.15rem;
 	outline: inherit;
   font-family: 'Clear Sans';
   font-weight: bolder;
@@ -501,6 +523,7 @@ p {
 	cursor: pointer;
 	outline: inherit;
   vertical-align: middle;
+  transform: scale(1.25);
   color: black;
   font-family: 'Clear Sans';
 }
@@ -515,4 +538,8 @@ p {
   max-width: 25%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.logged-in-as-text {
+  font-family: 'Clear Sans';
 }

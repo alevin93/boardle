@@ -1,6 +1,6 @@
 import React from 'react'
 import BackArrow from '@material-ui/icons/ArrowLeft';
-import ForwardArrow from '@material-ui/icons/ArrowForward';
+import ForwardArrow from '@material-ui/icons/ArrowRight';
 
 
 function Calendar({ date, setDate, dateOffset, setDateOffset, restoreDate }) {
