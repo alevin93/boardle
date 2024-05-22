@@ -52,7 +52,7 @@ function Register() {
     window.location.reload();
   }
 
-  if(registered == false){
+  if(registered === false){
     return (
       <div className='register-card-container'>
           <div className='create-user-container'>
@@ -72,7 +72,7 @@ function Register() {
       </div>
     )
   }
-  if(registered == true){
+  if(registered === true){
     return (
       <div className='register-card-container'>
         <div className='create-user-container'>

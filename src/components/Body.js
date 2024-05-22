@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import GameRow from './GameRow';
 import Input from './Input';
 import Calendar from './Calendar';
-import Footer from './Footer';
 
 const URL = process.env.BASE_URL;
 
