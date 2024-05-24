@@ -8,6 +8,8 @@ function Input() {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   async function handleSubmit() {
+    setToggle(false);
+    if(input === '') { return; }
     const submitData = async () => {
       let message = {
         "user": `${localStorage.getItem('user')}`,
@@ -27,24 +29,17 @@ function Input() {
       toggleInputSlider();
     };
 
-    await submitData().then(res => console.log(res));
+    await submitData().then(res => window.location.reload());
   }
 
-  const toggleInputSlider = async () => {
-    console.log("Toggle is: " + toggle)
-    console.log("Input is: " + input)
-    if(toggle && input !== '') {
-      await handleSubmit();
-      setToggle(false);
-      document.getElementById('form').value = '';
-      setInput('');
-      window.location.reload();
-    }
-    else if (toggle) {
+  const toggleInputSlider = () => {
+    console.log("Toggle is: " + toggle);
+    console.log("Input is: " + input);
+    if (toggle) {
       setToggle(false);
     }
-    else if (!toggle) {
-      setToggle(true)
+    else {
+      setToggle(true);
     }
   }
 
@@ -68,7 +63,7 @@ function Input() {
   return (
     <>
       <div className={`bigger-input-container ${toggle ? 'show' : ''}`}>
-        <button className='top-input-container' onClick={toggleInputSlider}>
+        <button className='top-input-container' onClick={toggle? handleSubmit : toggleInputSlider}>
           <p>SUBMIT</p>
         </button>
         <div className='input-container'>
