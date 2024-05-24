@@ -447,9 +447,9 @@ p {
 
 .game-row-container {
   padding-bottom: 1rem;
-  text-align: center;
   max-width: 100vw;
   overflow-x: auto;
+  text-align: center;
 }
 
 .buy-me-a-coffee {

@@ -27,14 +27,24 @@ function Input() {
       toggleInputSlider();
     };
 
-    await submitData().then(res => window.location.reload());
+    await submitData().then(res => console.log(res));
   }
 
   const toggleInputSlider = () => {
+    console.log("Toggle is: " + toggle)
+    console.log("Input is: " + input)
     if(toggle && input !== '') {
       handleSubmit();
+      setToggle(false);
+      setInput('');
+      window.location.reload();
     }
-    setToggle(!toggle); // Toggle directly using negation
+    else if (toggle) {
+      setToggle(false);
+    }
+    else if (!toggle) {
+      setToggle(true)
+    }
   }
 
   function getDate() {
