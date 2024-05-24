@@ -30,12 +30,13 @@ function Input() {
     await submitData().then(res => console.log(res));
   }
 
-  const toggleInputSlider = () => {
+  const toggleInputSlider = async () => {
     console.log("Toggle is: " + toggle)
     console.log("Input is: " + input)
     if(toggle && input !== '') {
-      handleSubmit();
+      await handleSubmit();
       setToggle(false);
+      document.getElementById('form').value = '';
       setInput('');
       window.location.reload();
     }
@@ -72,6 +73,7 @@ function Input() {
         </button>
         <div className='input-container'>
           <textarea
+            id='form'
             className='input'
             placeholder="Enter your score from any game"
             onChange={(e) => setInput(e.target.value)}
