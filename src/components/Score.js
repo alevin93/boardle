@@ -2,13 +2,13 @@ import React from 'react'; // Ensure you have React imported
 
 function Score(props) {
     const { data } = props;
-
-    const scoreLines = data.text.split('~'); // Split into lines
+    console.log(data);
+    const scoreLines = data[1].text.split('~'); // Split into lines
 
     return (
         <div className='score-card'>
             <div className='score-card-name'>
-                <p>{data.player}</p>
+                <p>{data[1].player}</p>
             </div>
             <div className='score-card-text'>
                 {scoreLines.map((line, index) => (

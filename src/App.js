@@ -2,7 +2,6 @@ import React, {useState, useCallback} from 'react';
 import './App.css';
 import TopBar from './components/TopBar';
 import Menu from './components/Menu'
-import Input from './components/Input';
 import Body from './components/Body';
 import Register from './components/Register';
 import Footer from './components/Footer';

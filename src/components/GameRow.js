@@ -21,7 +21,7 @@ function GameRow(props) {
       <div className='game-row-container'>
         <h2 className='game-title'>{gameName}</h2>
           <div className='score-container'> 
-              {gameDataArray.map((gameData) => (
+              {Object.entries(gameDataArray).map((gameData) => (
                   <div key={gameData.player}> 
                       <Score data={gameData} />
                   </div>
@@ -29,7 +29,7 @@ function GameRow(props) {
           </div> 
           <div className='bigger-comment-container'>
             {
-            commentArray.map((comments) => (
+            Object.entries(commentArray).map((comments) => (
                 <div className='comment-container'>
                 <p key={comments} className='comment-text'>{comments}</p>
                 </div>
@@ -42,7 +42,7 @@ function GameRow(props) {
         <div className='game-row-container'>
           <h2 className='game-title'>{gameName}</h2>
             <div className='score-container'> 
-                {gameDataArray.map((gameData) => (
+                {Object.entries(gameDataArray).map((gameData) => (
                     <div key={gameData.player}> 
                         <Score data={gameData} />
                     </div>

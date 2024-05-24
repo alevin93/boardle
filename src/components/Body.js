@@ -32,7 +32,7 @@ function Body() {
     const response = await fetch(`${BASE_URL}/getfriendsdata`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user: localStorage.getItem('share'), date: date}) 
+      body: JSON.stringify({ user: localStorage.getItem('share'), date: date, token: localStorage.getItem('token')}) 
     });
   
     const data = await response.json(); // Ensure data is fully parsed

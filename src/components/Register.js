@@ -7,6 +7,8 @@ function Register() {
   const [name, setName] = useState('');
   const [input, setInput] = useState('');
   const [registered, setRegistered] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleCreateUser = async () => {
       const getNewUser = async () => {
@@ -52,6 +54,26 @@ function Register() {
     window.location.reload();
   }
 
+  const handleRegister = async () => {
+    const response = await fetch(`${BASE_URL}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: username, password: password, private: input })
+    })
+    const jsonData = await response.json();
+
+
+
+    console.log(JSON.parse(jsonData).token);
+    localStorage.setItem("name", JSON.parse(jsonData).name);
+    localStorage.setItem("user", JSON.parse(jsonData).private);
+    localStorage.setItem("share", JSON.parse(jsonData).share);
+    localStorage.setItem("token", JSON.parse(jsonData).token);
+
+
+
+  }
+
   if(registered === false){
     return (
       <div className='register-card-container'>
@@ -61,13 +83,20 @@ function Register() {
               setName(e.target.value)}} placeholder="Enter name here..." ></input>
               <button className='create-user-button' onClick={handleCreateUser}>Create User</button>
           </div>
-          <h3 className='create-user-text'>OR</h3>
           <div className='create-user-container'>
               <h3 className='create-user-text'>Returning User?</h3>
               <h3 className='create-user-text'>Enter private code below!</h3>
               <input className='return-user-input' placeholder="Enter private code here..." onChange={(e) => {
               setInput(e.target.value)}}></input>
               <button className='create-user-button' onClick={handleSubmit}>Submit</button>
+          </div>
+          <div className='create-user-container'>
+              <h3 className='create-user-text'>Register with Email</h3>
+              <input className='return-user-input' onChange={(e) => {setName(e.target.value)}} placeholder='name'></input>
+              <input className='return-user-input' onChange={(e) => {setUsername(e.target.value)}} placeholder='email or username'></input>
+              <input className='return-user-input' onChange={(e) => {setPassword(e.target.value)}} placeholder='password'></input>
+              <input className='return-user-input' onChange={(e) => {setInput(e.target.value)}} placeholder='private code (optional)'></input>
+              <button className='create-user-button' onClick={handleRegister}>Submit</button>
           </div>
       </div>
     )
