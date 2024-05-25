@@ -55,6 +55,9 @@ function Register({ setShowRegister }) {
   }
 
   const handleRegister = async () => {
+    if(!username.includes('@')) {
+      alert("Please insert a real email!");
+    }
     if(password === '') {
       alert("Please enter a password");
       return;
@@ -115,7 +118,16 @@ function Register({ setShowRegister }) {
               setUsername(e.target.value)}} placeholder="email" ></input>
               <input className='create-user-input' onChange={(e) => {
               setPassword(e.target.value)}} placeholder="password" ></input>
-              <button className='create-user-button' onClick={handleLogin}>Create User</button>
+              <button className='create-user-button' onClick={handleLogin}>Sign In</button>
+          </div>
+          <div className='create-user-container'>
+              <h3 className='create-user-text'>Register with Email</h3>
+              <input className='return-user-input' onChange={(e) => {setName(e.target.value)}} placeholder='name'></input>
+              <input className='return-user-input' onChange={(e) => {setUsername(e.target.value)}} placeholder='email or username'></input>
+              <input className='return-user-input' onChange={(e) => {setPassword(e.target.value)}} placeholder='password'></input>
+              <p className='create-user-text'>Enter private code below to link account, if you have one.</p>
+              <input className='return-user-input' onChange={(e) => {setInput(e.target.value)}} placeholder='private code (optional)'></input>
+              <button className='create-user-button' onClick={handleRegister}>Submit</button>
           </div>
           <div className='create-user-container'>
               <h3 className='create-user-text'>Returning User?</h3>
@@ -123,14 +135,6 @@ function Register({ setShowRegister }) {
               <input className='return-user-input' placeholder="Enter private code here..." onChange={(e) => {
               setInput(e.target.value)}}></input>
               <button className='create-user-button' onClick={handleSubmit}>Submit</button>
-          </div>
-          <div className='create-user-container'>
-              <h3 className='create-user-text'>Register with Email</h3>
-              <input className='return-user-input' onChange={(e) => {setName(e.target.value)}} placeholder='name'></input>
-              <input className='return-user-input' onChange={(e) => {setUsername(e.target.value)}} placeholder='email or username'></input>
-              <input className='return-user-input' onChange={(e) => {setPassword(e.target.value)}} placeholder='password'></input>
-              <input className='return-user-input' onChange={(e) => {setInput(e.target.value)}} placeholder='private code (optional)'></input>
-              <button className='create-user-button' onClick={handleRegister}>Submit</button>
           </div>
       </div>
     )
