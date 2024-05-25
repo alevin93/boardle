@@ -1,9 +1,11 @@
-import React from 'react'; // Ensure you have React imported
+import React, {useEffect} from 'react'; // Ensure you have React imported
 
 function Score(props) {
     const { data } = props;
     console.log(data);
-    const scoreLines = data[1].text.split('~'); // Split into lines
+    let scoreLines = '';
+    scoreLines = data[1].text.split('~'); // Split into lines
+
 
     return (
         <div className='score-card'>
@@ -11,7 +13,7 @@ function Score(props) {
                 <p>{data[1].player}</p>
             </div>
             <div className='score-card-text'>
-                {scoreLines.map((line, index) => (
+                {scoreLines?.map((line, index) => (
                     <p key={index}>{line}</p>
                 ))}
             </div>

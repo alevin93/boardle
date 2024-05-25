@@ -16,7 +16,8 @@ function Body() {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
-    console.log(Object.keys(gamesData))
+
+    console.log(localStorage.getItem('share'))
     let temp = getDate();
     if (date) {
       fetchGames(date);
@@ -36,10 +37,17 @@ function Body() {
     });
   
     const data = await response.json(); // Ensure data is fully parsed
-    setGamesData(data);
-    const rawGamesData = JSON.parse(data);
-    const sortedGamesData = {};
 
+    //error handling
+    if(JSON.parse(data).error) { alert(JSON.parse(data).error); return;}
+
+    if(JSON.parse(data).token) {
+      localStorage.setItem('token', JSON.parse(data).token)
+    }
+
+    const rawGamesData = JSON.parse(data).results;
+    const sortedGamesData = {};
+    console.log(rawGamesData);
     for (let x = 0; x < rawGamesData.length; x++) {
       if (!sortedGamesData.hasOwnProperty(rawGamesData[x].gameName)) {
         sortedGamesData[rawGamesData[x].gameName] = [];
@@ -71,7 +79,7 @@ function getDate() {
   let formattedDate = `${year}-${month}-${day}`;
   return formattedDate;
 }
-if(Object.keys(gamesData).length === 0) {
+if(Object.entries(gamesData).length < 1) {
   return (
     <div className='main-container'>
         <Calendar date={date} setDate={setDate} dateOffset={dateOffset} setDateOffset={setDateOffset} restoreDate={restoreDate} />
@@ -87,7 +95,7 @@ if(Object.keys(gamesData).length === 0) {
     </div>
   );
 }
-else {
+else if (Object.entries(gamesData).length > 0) {
   return (
     <div className='main-container'>
         <Calendar date={date} setDate={setDate} dateOffset={dateOffset} setDateOffset={setDateOffset} restoreDate={restoreDate} />

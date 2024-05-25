@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 
 function Input() {
 
+  const supportedGames = [
+    "connections",
+    "wordle",
+    "mini crossword",
+    "strands",
+    "costcodle",
+    "bandle",
+    "contexto",
+    "flashback",
+  ]
+
   const [input, setInput] = useState('');
   const [comment, setComment] = useState('');
   const [toggle, setToggle] = useState(false);
@@ -9,6 +20,7 @@ function Input() {
 
   async function handleSubmit() {
     setToggle(false);
+    if(input)
     if(input === '') { return; }
     const submitData = async () => {
       let message = {
@@ -16,6 +28,7 @@ function Input() {
         "data": `${input}`,
         "date": `${getDate()}`,
         "comment": `${comment}`,
+        "token" : `${localStorage.getItem('token')}`
       };
       console.log(message);
       const response = await fetch(`${BASE_URL}/submit`, {
@@ -31,6 +44,8 @@ function Input() {
 
     await submitData().then(res => window.location.reload());
   }
+
+
 
   const toggleInputSlider = () => {
     console.log("Toggle is: " + toggle);

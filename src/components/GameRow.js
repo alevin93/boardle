@@ -6,7 +6,7 @@ function GameRow(props) {
   
   const [commentArray, setCommentArray] = useState([]);
 
-  useEffect(() => { 
+  useEffect(() => {
     let tempArray = [];
     for (let x = 0; x < gameDataArray.length; x++) {
         if (gameDataArray[x].comment !== '') { 

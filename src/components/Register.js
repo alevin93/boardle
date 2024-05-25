@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 
-function Register() {
+function Register({ setShowRegister }) {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -55,33 +55,67 @@ function Register() {
   }
 
   const handleRegister = async () => {
+    if(password === '') {
+      alert("Please enter a password");
+      return;
+    }
     const response = await fetch(`${BASE_URL}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, email: username, password: password, private: input })
+      body: JSON.stringify({ name: name, email: username, unhashed_password: password, private: input })
     })
     const jsonData = await response.json();
 
+    if(JSON.parse(jsonData).error) {
+      alert(JSON.parse(jsonData).error)
+      return;
+    }
 
-
-    console.log(JSON.parse(jsonData).token);
+    console.log(JSON.parse(jsonData));
     localStorage.setItem("name", JSON.parse(jsonData).name);
     localStorage.setItem("user", JSON.parse(jsonData).private);
     localStorage.setItem("share", JSON.parse(jsonData).share);
     localStorage.setItem("token", JSON.parse(jsonData).token);
 
+    setShowRegister(false);
 
+  }
 
+  async function handleLogin() {
+    if(username === '' || password === '') {
+      alert('Please enter username and password')
+    }
+    const response = await fetch(`${BASE_URL}/login`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ username: username, password: password})
+    })
+    const jsonData = await response.json();
+
+    if(JSON.parse(jsonData).error) {
+      alert(JSON.parse(jsonData).error);
+    }
+    console.log(JSON.parse(jsonData));
+    localStorage.setItem("name", JSON.parse(jsonData).name);
+    localStorage.setItem("user", JSON.parse(jsonData).private);
+    localStorage.setItem("share", JSON.parse(jsonData).share);
+    localStorage.setItem('token', JSON.parse(jsonData).token);
+
+    console.log(localStorage.getItem('share'));
+
+    setShowRegister(false);
   }
 
   if(registered === false){
     return (
       <div className='register-card-container'>
           <div className='create-user-container'>
-              <h3 className='create-user-text'>New to Boardle?</h3>
+              <h3 className='create-user-text'>Login</h3>
               <input className='create-user-input' onChange={(e) => {
-              setName(e.target.value)}} placeholder="Enter name here..." ></input>
-              <button className='create-user-button' onClick={handleCreateUser}>Create User</button>
+              setUsername(e.target.value)}} placeholder="email" ></input>
+              <input className='create-user-input' onChange={(e) => {
+              setPassword(e.target.value)}} placeholder="password" ></input>
+              <button className='create-user-button' onClick={handleLogin}>Create User</button>
           </div>
           <div className='create-user-container'>
               <h3 className='create-user-text'>Returning User?</h3>

@@ -20,10 +20,16 @@ function Menu() {
           headers: {
             'Content-Type': "application/json"
           },
-          body: JSON.stringify({ user : localStorage.getItem('share'), friend : input})
-    }).then( response => window.location.reload());
-    console.log(response);
+          body: JSON.stringify({ user : localStorage.getItem('share'), friend : input, token: localStorage.getItem('token')})
+    }).then( response => {
+      if(JSON.parse(response).error) {
+        alert(JSON.parse(response).error);
+      }
+      window.location.reload()
+  });
   }
+
+
 
   function handleCopyCode() {
     // Create a new text area element

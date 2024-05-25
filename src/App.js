@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import './App.css';
 import TopBar from './components/TopBar';
 import Menu from './components/Menu'
@@ -9,6 +9,16 @@ import Footer from './components/Footer';
 function App() {
 
   const [showMenu, setShowMenu] = useState(false);
+  const [showRegister, setShowRegister] = useState(true)
+
+  useEffect(() => {
+    console.log(showRegister)
+    console.log(localStorage.getItem('user'))
+    console.log(localStorage.getItem('token'))
+    if(localStorage.getItem('user') || localStorage.getItem('token')) {
+      setShowRegister(false);
+    }
+  }, [showRegister]);
 
   const toggleMenu = useCallback(() => {
     if(showMenu) {
@@ -19,7 +29,7 @@ function App() {
     }
   })
 
-  if(localStorage.getItem('user')) {
+  if(!showRegister) {
     return (
     <div className="app-wrapper">
       <TopBar toggleMenu={toggleMenu} />
@@ -38,7 +48,7 @@ function App() {
     return (
       <div className="main-container">
         <TopBar toggleMenu={toggleMenu} />
-        <Register />
+        <Register setShowRegister={setShowRegister}/>
       </div>
     )
   }
