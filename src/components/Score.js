@@ -13,7 +13,7 @@ function Score(props) {
                 <p>{data[1].player}</p>
             </div>
             <div className='score-card-text'>
-                {scoreLines?.map((line, index) => (
+                {scoreLines.map((line, index) => (
                     <p key={index}>{line}</p>
                 ))}
             </div>

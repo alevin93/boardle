@@ -3,13 +3,12 @@ import Score from './Score'
 
 function GameRow(props) {
   const { gameName, gameDataArray } = props;
-  
   const [commentArray, setCommentArray] = useState([]);
 
   useEffect(() => {
     let tempArray = [];
     for (let x = 0; x < gameDataArray.length; x++) {
-        if (gameDataArray[x].comment !== '') { 
+        if (gameDataArray[x].comment !== '') {
             tempArray.push(`"${gameDataArray[x].comment}" - ${gameDataArray[x].player}`);
         }
     }
@@ -29,7 +28,7 @@ function GameRow(props) {
           </div> 
           <div className='bigger-comment-container'>
             {
-            Object.entries(commentArray).map((comments) => (
+            commentArray.map((comments) => (
                 <div className='comment-container'>
                 <p key={comments} className='comment-text'>{comments}</p>
                 </div>
