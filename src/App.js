@@ -5,6 +5,7 @@ import Menu from './components/Menu'
 import Body from './components/Body';
 import Register from './components/Register';
 import Footer from './components/Footer';
+//import AdsComponent from './components/AdComponent';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
         <button className='cancel-area' onClick={toggleMenu}>BUTTON</button>
     </div>
       <Body />
+      {/*<AdsComponent /> */}
       <Footer />
       
     </div>

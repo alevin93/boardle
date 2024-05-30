@@ -33,12 +33,8 @@ function Menu() {
             'Content-Type': "application/json"
           },
           body: JSON.stringify({ user : localStorage.getItem('share'), friend : input, token: localStorage.getItem('token')})
-    }).then( response => {
-      if(response.error) {
-        alert(response.error);
-      }
-      window.location.reload()
-  });
+    })
+    window.location.reload();
   }
 
   const friendsToggle = () => {
@@ -65,6 +61,21 @@ function Menu() {
     const newData = JSON.parse(data.friends);
     console.log(newData);
     setFriendsArray(newData ? newData : []);
+  }
+
+  const handleRemoveFriend = async (id) => {
+    const tempArray = friendsArray.filter(friend => friend.id !== id);
+    setFriendsArray(tempArray);
+    console.log(tempArray);
+    const response = await fetch(`${BASE_URL}/removeFriend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': "application/json"
+      },
+      body: JSON.stringify({ "user" : localStorage.getItem("user"), "token" : localStorage.getItem("token"), "friends" : tempArray})
+    })
+    const data = await response;
+    console.log(data);
   }
 
   function handleCopyCode() {
@@ -106,6 +117,7 @@ function Menu() {
       <h1 className='logged-in-as-text'>Logged in as: {localStorage.getItem("name")}</h1>
       <p>Your private passkey is:</p>
       <h3 className='private-passkey'>{localStorage.getItem("user")}</h3>
+      <p>(You can use this to recover your account)</p>
       
       <button onClick={handleLogOut} className='log-out-button' >LOG OUT</button>
       </div>
@@ -131,7 +143,7 @@ function Menu() {
               <p key={friend.id || friend._id}> {/* Use a unique identifier for each friend */}
                 <span className="friend-name">{friend.name}</span>
                 {/* Add button functionality based on your requirements */}
-                <button className="remove-friend-button" >REMOVE</button>
+                <button className="remove-friend-button" onClick={() => handleRemoveFriend(friend.id)} >REMOVE</button>
               </p>
             ))}
           </ul>

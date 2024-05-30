@@ -2,11 +2,13 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className="footer-container">
-        <p>Please hire me NYT Games</p>
-    <div className='menu-buttons-container'>
+    <div class="footer-container">
+    <div class="footer-content">
+      <a class="buy-me-a-coffee" href="https://buymeacoffee.com/alevin93" target="_blank">☕Buy me a coffee?☕</a>
+      <p>Please hire me NYT Games</p>
     </div>
-    </div>
+  </div>
+  
   )
 }
 
