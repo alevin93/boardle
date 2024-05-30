@@ -12,9 +12,6 @@ function App() {
   const [showRegister, setShowRegister] = useState(true)
 
   useEffect(() => {
-    console.log(showRegister)
-    console.log(localStorage.getItem('user'))
-    console.log(localStorage.getItem('token'))
     if(localStorage.getItem('user') || localStorage.getItem('token')) {
       setShowRegister(false);
     }
@@ -32,6 +29,7 @@ function App() {
   if(!showRegister) {
     return (
     <div className="app-wrapper">
+      
       <TopBar toggleMenu={toggleMenu} />
       <div className={`main-menu-container ${showMenu ? 'show' : ''}`}>
         <Menu />
@@ -41,6 +39,7 @@ function App() {
     </div>
       <Body />
       <Footer />
+      
     </div>
     );
   }

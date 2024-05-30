@@ -1,6 +1,6 @@
 {
-  "short_name": "BOARDLE",
-  "name": "BOARDLE: Share your scores!",
+  "short_name": "BOARDLE TEST",
+  "name": "TESTING THE SHARE",
   "icons": [
     {
       "src": "favicon.ico",
@@ -38,10 +38,11 @@
     }
   ],
   "share_target": {
-    "action": "/share-target",
+    "action": "/share/",
     "method": "POST",
-    "enctype": "application/x-www-form-urlencoded",
+    "enctype": "multipart/form-data",
     "params": {
+      "title": "title",
       "text": "text"
     }
   },

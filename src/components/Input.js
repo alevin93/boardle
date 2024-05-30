@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Input() {
 
@@ -13,10 +13,12 @@ function Input() {
     "flashback",
   ]
 
+
   const [input, setInput] = useState('');
   const [comment, setComment] = useState('');
   const [toggle, setToggle] = useState(false);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 
   async function handleSubmit() {
     setToggle(false);
