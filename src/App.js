@@ -5,12 +5,14 @@ import Menu from './components/Menu'
 import Body from './components/Body';
 import Register from './components/Register';
 import Footer from './components/Footer';
+import BoardGames from './components/BoardGames';
 //import AdsComponent from './components/AdComponent';
 
 function App() {
 
   const [showMenu, setShowMenu] = useState(false);
-  const [showRegister, setShowRegister] = useState(true)
+  const [showRegister, setShowRegister] = useState(true);
+  const [showBoardGames, setShowBoardGames] = useState(false);
 
   useEffect(() => {
     if(localStorage.getItem('user') || localStorage.getItem('token')) {
@@ -26,6 +28,14 @@ function App() {
       setShowMenu(true);
     }
   })
+  const toggleBG = () => {
+    if(showBoardGames) {
+      setShowBoardGames(false)
+    } 
+    else {
+      setShowBoardGames(true);
+    }
+  }
 
   if(!showRegister) {
     return (
@@ -40,7 +50,13 @@ function App() {
     </div>
       <Body />
       {/*<AdsComponent /> */}
-      <Footer />
+      <Footer toggleBG={toggleBG} />
+    <div className={`bigger-board-game-container ${showBoardGames ? 'show' : ''}`} >
+      <BoardGames />
+    </div>
+    <div className={`cancel-area-container ${showBoardGames ? 'show' : ''}`}>
+        <button className='cancel-area' onClick={toggleBG}>BUTTON</button>
+    </div>
       
     </div>
     );
