@@ -34,7 +34,12 @@ function Menu() {
           },
           body: JSON.stringify({ user : localStorage.getItem('share'), friend : input, token: localStorage.getItem('token')})
     })
-    window.location.reload();
+    const data = await response.json();
+    console.log("Data is: ", await JSON.parse(data).error);
+    if(JSON.parse(data).error) {
+      alert(JSON.parse(data).error);
+    } else {
+    }
   }
 
   const friendsToggle = () => {

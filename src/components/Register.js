@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Register({ setShowRegister }) {
 
@@ -9,6 +10,8 @@ function Register({ setShowRegister }) {
   const [registered, setRegistered] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleCreateUser = async () => {
       const getNewUser = async () => {
@@ -80,8 +83,30 @@ function Register({ setShowRegister }) {
     localStorage.setItem("share", JSON.parse(jsonData).share);
     localStorage.setItem("token", JSON.parse(jsonData).token);
 
+    if(localStorage.getItem('friend-to-add')) {
+      handleAddFriend();
+      localStorage.removeItem('friend-to-add');
+      navigate('/');
+    }
+
     setShowRegister(false);
 
+  }
+
+  const handleAddFriend = async () => {
+    const response = await fetch(`${BASE_URL}/linkFriends`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': "application/json"
+          },
+          body: JSON.stringify({ user : localStorage.getItem('share'), friend : localStorage.getItem('friend-to-add'), token: localStorage.getItem('token')})
+    })
+    const data = await response.json();
+    console.log("Data is: ", await JSON.parse(data).error);
+    if(JSON.parse(data).error) {
+      alert(JSON.parse(data).error);
+    } else {
+    }
   }
 
   async function handleLogin() {
