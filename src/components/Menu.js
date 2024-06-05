@@ -6,6 +6,7 @@ function Menu() {
 
   
   const BASE_URL=process.env.REACT_APP_BASE_URL;
+  const WEBSITE=process.env.REACT_APP_WEBSITE;
 
   const handleLogOut = () => {
     localStorage.clear();
@@ -39,7 +40,9 @@ function Menu() {
     if(JSON.parse(data).error) {
       alert(JSON.parse(data).error);
     } else {
+      alert('Friend added!');
     }
+    window.location.reload();
   }
 
   const friendsToggle = () => {
@@ -88,7 +91,7 @@ function Menu() {
     const textArea = document.createElement('textarea');
   
     // Set the text content of the text area element
-    textArea.textContent = localStorage.getItem('share');
+    textArea.textContent = `${WEBSITE}/add/${localStorage.getItem('share')}`;
   
     // Add the text area element to the document
     document.body.appendChild(textArea);
@@ -101,6 +104,7 @@ function Menu() {
   
     // Remove the text area element from the document
     document.body.removeChild(textArea);
+    alert('Link Copied!');
   }
   if(!manageFriends) {
     return (
@@ -109,7 +113,7 @@ function Menu() {
       <div className="friend-add-container">
               <p>Your friend code is:</p>
               <h3 className='friend-code-text'>{localStorage.getItem("share")}</h3>
-              <button className='menu-buttons-copy' onClick={handleCopyCode}>Copy your code</button>
+              <button className='menu-buttons-copy' onClick={handleCopyCode}>Copy share link</button>
               <div className='add-friend-input-container'>
               <input className='add-friend-input' placeholder="Enter friend's code" onChange={(e) => {
             setInput(e.target.value)}}></input>

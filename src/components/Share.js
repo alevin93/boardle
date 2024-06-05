@@ -31,7 +31,6 @@ function Share() {
         if(JSON.parse(data).error) {
           alert(JSON.parse(data).error);
         } else {
-            navigate('/');
         }
         navigate('/');
       }
