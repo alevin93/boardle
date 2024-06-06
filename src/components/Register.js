@@ -134,6 +134,10 @@ function Register({ setShowRegister }) {
     setShowRegister(false);
   }
 
+  const handleForgotPassword = () => {
+    navigate('/reset')
+  }
+
   if(registered === false){
     return (
       <div className='register-card-container'>
@@ -144,6 +148,7 @@ function Register({ setShowRegister }) {
               <input className='create-user-input' onChange={(e) => {
               setPassword(e.target.value)}} type="password" placeholder="password" ></input>
               <button className='create-user-button' onClick={handleLogin}>Sign In</button>
+              <button className='forgot-password-button' onClick={handleForgotPassword}>Forgot Password?</button>
           </div>
           <div className='create-user-container'>
               <h3 className='create-user-text'>Register with Email</h3>
