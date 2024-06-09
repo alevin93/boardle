@@ -15,6 +15,7 @@ function Share() {
         } else {
             localStorage.setItem('friend-to-add', share)
             navigate('/');
+            window.location.reload();
         }
     }, [share])
 
@@ -32,12 +33,14 @@ function Share() {
           alert(JSON.parse(data).error);
         } else {
         }
+        
         navigate('/');
+        window.location.reload();
       }
 
     console.log(share);
   return (
-    <p>adding user...</p>
+    <p>adding friend...</p>
   )
 }
 

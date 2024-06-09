@@ -30,10 +30,6 @@ function Register({ setShowRegister }) {
       await getNewUser();
   }
 
-  const continueRegistration = async () => {
-    window.location.reload();
-  }
-
   const handleSubmit = async () => {
     const restoreUser = async () => {
       const response = await fetch(`${BASE_URL}/restoreUser`, {
@@ -54,7 +50,12 @@ function Register({ setShowRegister }) {
       console.log(localStorage.getItem('share'))
     }
     await restoreUser();
-    window.location.reload();
+    if(localStorage.getItem('friend-to-add')) {
+      handleAddFriend();
+      localStorage.removeItem('friend-to-add');
+      navigate('/');
+    }
+    navigate('/');
   }
 
   const handleRegister = async () => {
@@ -102,7 +103,7 @@ function Register({ setShowRegister }) {
           body: JSON.stringify({ user : localStorage.getItem('share'), friend : localStorage.getItem('friend-to-add'), token: localStorage.getItem('token')})
     })
     const data = await response.json();
-    console.log("Data is: ", await JSON.parse(data).error);
+    console.log("Data is: ", await data.error);
     if(JSON.parse(data).error) {
       alert(JSON.parse(data).error);
     } else {
@@ -131,14 +132,20 @@ function Register({ setShowRegister }) {
 
     console.log(localStorage.getItem('share'));
 
-    setShowRegister(false);
+    if(localStorage.getItem('friend-to-add')) {
+      handleAddFriend();
+      localStorage.removeItem('friend-to-add');
+      navigate('/');
+    }
+
+    window.location.reload();
   }
 
   const handleForgotPassword = () => {
     navigate('/reset')
   }
 
-  if(registered === false){
+
     return (
       <div className='register-card-container'>
           <div className='create-user-container'>
@@ -168,20 +175,6 @@ function Register({ setShowRegister }) {
           </div>
       </div>
     )
-  }
-  if(registered === true){
-    return (
-      <div className='register-card-container'>
-        <div className='create-user-container'>
-          <h3 className='create-user-text'>Thank you for registering!</h3>
-          <h3 className='create-user-text'>The code below is your passkey to gaining your account back if you lose access to this browser, or want to log in on a different device.</h3>
-          <h3 className='emphasized-register-text'>DO NOT LOSE IT</h3>
-          <h3 className='private-passkey'>{localStorage.getItem("user")}</h3>
-          <button className='register-continue-button' onClick={continueRegistration}>Continue when ready</button>
-        </div>
-      </div>
-    )
-  }
 }
 
 export default Register

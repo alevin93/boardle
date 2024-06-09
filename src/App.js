@@ -3,6 +3,7 @@ import './App.css';
 import Share from './components/Share';
 import Main from './components/Main';
 import Reset from './components/Reset';
+import Recover from './components/Recover';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,6 +18,7 @@ function App() {
       <Route path='/' element={<Main />} />
       <Route path='/add/:share' element={<Share />} />
       <Route path='/reset/' element={<Reset />} />
+      <Route path='/recover/:code' element={<Recover />} />
     </Routes>
     </Router>
     )

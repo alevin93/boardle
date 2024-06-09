@@ -12,6 +12,7 @@ function Reset() {
         if(email === '') {
           setMessage("Please enter email!")
         }
+        alert('Email sent!  \n (remember to check spam)')
         const response = await fetch(`${BASE_URL}/resetPassword`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
@@ -19,10 +20,12 @@ function Reset() {
         })
         const jsonData = await response.json();
     
-        if(JSON.parse(jsonData).error) {
-          alert(JSON.parse(jsonData).error);
+        if(jsonData.error) {
+          alert(jsonData.error);
         }
         setMessage('Message sent successfully to the provided email')//JSON.parse(jsonData));
+        
+        
 
       }
 
