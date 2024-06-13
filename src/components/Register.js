@@ -56,6 +56,7 @@ function Register({ setShowRegister }) {
       navigate('/');
     }
     navigate('/');
+    window.location.reload();
   }
 
   const handleRegister = async () => {

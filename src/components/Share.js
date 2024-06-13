@@ -12,10 +12,11 @@ function Share() {
         if(localStorage.getItem('user') || localStorage.getItem('token')) {
             setUser(localStorage.getItem('share'))
             handleAddFriend();
+            navigate('/');
+            alert('Friend added!');
         } else {
             localStorage.setItem('friend-to-add', share)
             navigate('/');
-            window.location.reload();
         }
     }, [share])
 
@@ -35,7 +36,6 @@ function Share() {
         }
         
         navigate('/');
-        window.location.reload();
       }
 
     console.log(share);
