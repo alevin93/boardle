@@ -82,7 +82,6 @@ function getDate() {
 if(Object.entries(gamesData).length < 1) {
   return (
     <div className='main-container'>
-        <Calendar date={date} setDate={setDate} dateOffset={dateOffset} setDateOffset={setDateOffset} restoreDate={restoreDate} />
         <div className="game-list"> 
             {Object.entries(gamesData).map(([gameName, gamesData]) => (
                 <GameRow key={gameName} gameName={gameName} gameDataArray={gamesData} /> 
@@ -98,7 +97,6 @@ if(Object.entries(gamesData).length < 1) {
 else if (Object.entries(gamesData).length > 0) {
   return (
     <div className='main-container'>
-        <Calendar date={date} setDate={setDate} dateOffset={dateOffset} setDateOffset={setDateOffset} restoreDate={restoreDate} />
         <div className="game-list"> 
             {Object.entries(gamesData).map(([gameName, gamesData]) => (
                 <GameRow key={gameName} gameName={gameName} gameDataArray={gamesData} /> 
